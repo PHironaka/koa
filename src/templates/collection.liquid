@@ -1,0 +1,102 @@
+{% paginate collection.products by 12 %}
+  
+  <div>
+    {% for product in collection.products %}
+      <div class="product-index">
+        {% if product.featured_image != blank %}
+      <div class="product-index--image">
+
+          <a href="{{ product.url | within: collection }}">
+            {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }}
+          </a>
+      </div>
+
+        {% endif %}
+      <div class="product-index--copy">
+
+        <h3>
+          <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        </h3>
+    {{ product.description }}
+
+    <p class="view-product"> <a href="{{ product.url | within: collection }}">View Product</a></p>
+
+
+<form action="/cart/add" method="post" enctype="multipart/form-data">
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          <div class="selector-wrapper js {{ option.name }}">
+            <label for="SingleOptionSelector-{{ forloop.index0 }}">
+              {{ option.name }}
+            </label>
+
+            <select
+              id="SingleOptionSelector-{{ forloop.index0 }}"
+              data-single-option-selector
+              data-index="option{{ option.position }}">
+              {% for value in option.values %}
+                <option
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}selected="selected"{% endif %}>
+                    {{ value }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endfor %}
+      {% endunless %}
+
+      <select name="id" class="no-js" data-product-select>
+        {% for variant in product.variants %}
+          <option
+            {% if variant == current_variant %}selected="selected"{% endif %}
+            {% unless variant.available %}disabled="disabled"{% endunless %}
+            value="{{ variant.id }}">
+              {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+
+
+      <button class="btn product-page"
+        type="submit"
+        name="add"
+        data-add-to-cart
+       >
+       Add To Cart
+          
+      </button>
+    </form>
+
+
+      </div>
+        
+      </div>
+
+    {% else %}
+      {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+        {% for i in (1..8) %}
+          <a href="#">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          </a>
+
+          <p>
+            <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+          </p>
+
+          <p>
+            {{ 1999 | money }}
+          </p>
+        {% endfor %}
+      {% else %}
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      {% endif %}
+
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+{% endpaginate %}

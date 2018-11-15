@@ -1,0 +1,104 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {% if settings.favicon != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+  {% capture seo_title %}
+    {{ page_title }}
+    {% if current_tags %}
+      {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {% endif %}
+    {% if current_page != 1 %}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {% endif %}
+    {% unless page_title contains shop.name %}
+      &ndash; {{ shop.name }}
+    {% endunless %}
+  {% endcapture %}
+  <title>{{ seo_title }}</title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% include 'social-meta-tags' %}
+
+<link rel="stylesheet" href="https://use.typekit.net/xlj4zce.css">
+
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.shopify.com/s/files/1/2140/7529/files/font_2a23c569-64b3-4e0d-b70f-c17bb1d7724a.css?16700169416591184029"> -->
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    };
+  </script>
+
+   {% if template.directory == 'customers' %}
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+  {% endif %}
+
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="http://ricostacruz.com/nprogress/nprogress.js" defer="defer"></script><!--<![endif]-->
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
+<!--   {% if template contains 'index' %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/instafeed@2.0.0/lib/instafeed.min.js"></script>{% endif %} 
+ -->
+  <!--[if lt IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+
+  {{ content_for_header }}
+
+
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+     {% if template contains 'index' %}<div id="loading"></div>  {% endif %} 
+  
+
+  {% section 'header' %}
+
+  <main role="main" id="MainContent">
+
+    {{ content_for_layout }}
+   {% if template contains 'index' %}
+    <div id="instafeed"></div>
+    {% endif %} 
+    
+  </main>
+
+  {% section 'footer' %}
+<!-- 
+   {% if template contains 'index' %}
+<script type="text/javascript">
+ var userFeed = new Instafeed({
+  get: 'user',
+  userId: '1560853632',
+  accessToken: '6281230240.1677ed0.6d1fc0e0758d4fe99c77568ca5c9f16d'
+});
+userFeed.run();
+</script>
+    {% endif %}  -->
+
+
+</body>
+</html>

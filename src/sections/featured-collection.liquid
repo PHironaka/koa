@@ -1,0 +1,49 @@
+
+
+{%- assign collection = collections[section.settings.collection] -%}
+
+{% for product in collection.products limit: 20 %}
+
+<div class="product-post">
+  <a href="{{ product.url | within: collection }}" class="product {{product.title}}">
+<div class="product-image">
+        <img src="{{ product.featured_image.src | img_url: '480x480' }}" alt="{{ featured.featured_image.alt | escape }}">
+    
+</div>
+    <h4>{{ product.title }}</h4>
+
+
+</a>
+
+</div>
+
+{% endfor %}
+
+
+
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+
+{% endschema %}
