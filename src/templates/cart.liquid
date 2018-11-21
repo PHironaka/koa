@@ -1,12 +1,13 @@
 {% if cart.item_count > 0 %}
+
+<div class="cart-items">
   <form action="/cart" method="post" novalidate>
     <table class="responsive-table">
       <thead class="small--hide">
         <tr class="cart-titles">
           <th colspan="2">{{ 'cart.label.product' | t }}</th>
-          <th>{{ 'cart.label.price' | t }}</th>
           <th>{{ 'cart.label.quantity' | t }}</th>
-          <th>{{ 'cart.label.total' | t }}</th>
+          <th>{{ 'cart.label.price' | t }}</th>
         </tr>
       </thead>
       <tbody>
@@ -30,25 +31,14 @@
                   {{ item | img_url: '240x240' | img_tag: item.title }}
                 </a>
               {% endif %}
-              <a href="{{ item.url }}">{{ item.product.title }}</a>
-    {% unless item.product.has_only_default_variant %}
-                <p>{{ item.variant.title }}</p>
-              {% endunless %}
-               <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+               <a class="remove-item" href="{{ item.url }}">{{ item.product.title }}</a>
+
+               <a class="remove-item" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
                 <small>{{ 'cart.general.remove' | t }}</small>
               </a>
             </td>
 
-            <td data-label="{{ 'cart.label.price' | t }}">
-              {% if item.original_line_price != item.line_price %}
-                <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
-                {{ item.price | money }}
-                <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
-                <s>{{ item.original_price | money }}</s>
-              {% else %}
-                {{ item.price | money }}
-              {% endif %}
-            </td>
+            
             <td data-label="{{ 'cart.label.quantity' | t }}">
               <input type="number"
                      name="updates[]"
@@ -67,7 +57,7 @@
     </table>
 
 
-
+<div class="cart-totals">
     <p>{{ 'cart.general.subtotal' | t }}</p>
     <p>{{ cart.total_price | money }}</p>
     {% if cart.total_discounts > 0 %}
@@ -76,9 +66,15 @@
     <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
     <input type="submit" name="update" value="{{ 'cart.general.update' | t }}">
     <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+  </div>
+    
   </form>
+  </div>
+
 {% else %}
-  <h1>{{ 'cart.general.title' | t }}</h1>
+
+<div class="cart">
+  <h2>{{ 'cart.general.title' | t }}</h2>
 
   {% comment %}
   Cart empty state
@@ -86,6 +82,7 @@
   <div class="supports-cookies">
     <p>{{ 'cart.general.empty' | t }}</p>
     <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+  </div>
   </div>
 
   {% comment %}

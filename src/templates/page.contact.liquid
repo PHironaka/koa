@@ -1,8 +1,11 @@
-<h1>{{ page.title }}</h1>
-
-<div class="rte">
+<div class="contact">
+<div class="contact-body">
   {{ page.content }}
+
+
 </div>
+
+<div class="contact-form">
 
 {% form 'contact' %}
 
@@ -21,23 +24,16 @@
     placeholder="{{ 'contact.form.name' | t }}"
     value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
 
-  <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+  <label for="ContactFormEmail">{{ 'contact.form.email' | t }} Address*</label>
   <input type="email"
     name="contact[email]"
     id="ContactFormEmail"
-    placeholder="{{ 'contact.form.email' | t }}"
+    placeholder="{{ 'contact.form.email' | t }} "
     value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
     spellcheck="false"
     autocomplete="off"
     autocapitalize="off">
 
-  <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
-  <input type="tel"
-    name="contact[phone]"
-    id="ContactFormPhone"
-    placeholder="{{ 'contact.form.phone' | t }}"
-    value="{% if form[phone] %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-    pattern="[0-9\-]*">
 
   <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
   <textarea rows="10"
@@ -52,3 +48,6 @@
   <input type="submit" class="btn" value="{{ 'contact.form.send' | t }}">
 
 {% endform %}
+</div>
+
+</div>

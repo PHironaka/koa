@@ -1,5 +1,8 @@
 <footer>
+<div class="three-col">
 
+<div class="col">
+<h4> About </h4>
   {%- assign footer_linklist = section.settings.footer_linklist -%}
   {% if linklists[footer_linklist].links.size > 0 %}
     <ul>
@@ -8,6 +11,48 @@
       {% endfor %}
     </ul>
   {% endif %}
+</h4>
+</div>
+
+<div class="col">
+<h4> Info </h4>
+  {%- assign footer_linklist = section.settings.footer_linklist -%}
+  {% if linklists[footer_linklist].links.size > 0 %}
+    <ul>
+      {% for link in linklists[footer_linklist].links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</h4>
+</div>
+
+<div class="col">
+<h4> Social </h4>
+  {%- assign footer_linklist = section.settings.footer_linklist -%}
+  {% if linklists[footer_linklist].links.size > 0 %}
+    <ul>
+      {% for link in linklists[footer_linklist].links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</h4>
+</div>
+</div>
+<div id="mc_embed_signup">
+<h3> Mailing List </h3>
+<form action="https://thechinatownmarket.us14.list-manage.com/subscribe/post?u=7641b08f28511416c16beebae&amp;id=31712a1353" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+  
+  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_7641b08f28511416c16beebae_31712a1353" tabindex="-1" value=""></div>
+    <div class="submit-button"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<small> &copy; {{ shop.name | link_to: '/' }}, All Rights Reserved {{ 'now' | date: "%Y" }}.</small>
 
 </footer>
 

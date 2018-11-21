@@ -23,13 +23,25 @@ h2, h3, h4
   
 }
 
+ul, li {
+  list-style:none;
+}
+
+li {
+  margin:7px 0;
+  a {
+  text-decoration:none;
+  color:black;
+  }
+}
+
 
 a:focus {
   color: inherit;
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
 }
 
 /*================ Form element helpers ================*/

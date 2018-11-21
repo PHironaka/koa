@@ -56,7 +56,8 @@
     <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
   {% endif %}
 
-    <!--[if (gt IE 9)|!(IE)]><!--><script src="http://ricostacruz.com/nprogress/nprogress.js" defer="defer"></script><!--<![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <!-- <script src="http://ricostacruz.com/nprogress/nprogress.js" defer="defer"></script><!--<![endif]--> 
 
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lt IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
@@ -64,7 +65,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/instafeed@2.0.0/lib/instafeed.min.js"></script>{% endif %} 
  -->
   <!--[if lt IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script> -->
 
   {{ content_for_header }}
 
@@ -80,10 +81,7 @@
   <main role="main" id="MainContent">
 
     {{ content_for_layout }}
-   {% if template contains 'index' %}
-    <div id="instafeed"></div>
-    {% endif %} 
-    
+
   </main>
 
   {% section 'footer' %}

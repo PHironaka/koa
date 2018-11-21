@@ -104,7 +104,30 @@ $(".dropdown-menu a").click(function() {
   
 
 
+//Check the scroll position
+$(window).scroll(function(){
+  if ($(this).scrollTop() > 500) {
+    event.preventDefault();
+    $(".scrollToTop").css({'transform': 'translate(0px, 0px)'});
+  } else {
+    $(".scrollToTop").css({'transform': 'translate(180px, 0px)'});
+  }
+});
 
+$("a[href^='#']").on('click', function (e) {
+  e.preventDefault();
+
+  $('html, body').animate({
+    scrollTop: $($(this).attr('href')).offset().top
+  }, 500, 'linear');
+});
+
+
+// //Click and scrolls top effect
+// $('.scrollToTop').click(function(){
+//   $('html, body').animate({scrollTop : 0},800);
+//   return false;
+//   });
 
 
 // jQuery('.cart').val('Sold Out').addClass('sold-out').attr('disabled', 'disabled');
