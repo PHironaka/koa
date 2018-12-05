@@ -19,7 +19,7 @@
         </h3>
     {{ product.description }}
 
-    <p class="view-product"> <a href="{{ product.url | within: collection }}">View Product</a></p>
+    <p class="view-product"> <a href="{{ product.url | within: collection }}">View Detail</a></p>
 
 
 <form action="/cart/add" method="post" enctype="multipart/form-data">
@@ -58,7 +58,7 @@
       </select>
 
 
-      <button class="btn product-page"
+      <button class=" product-page"
         type="submit"
         name="add"
         data-add-to-cart

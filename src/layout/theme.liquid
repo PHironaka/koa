@@ -81,11 +81,14 @@
   <main role="main" id="MainContent">
 
     {{ content_for_layout }}
-
+<!--    {% if template contains 'index' %}
+    <div id="instafeed"></div>
+    {% endif %}  -->
+    
   </main>
 
   {% section 'footer' %}
-<!-- 
+
    {% if template contains 'index' %}
 <script type="text/javascript">
  var userFeed = new Instafeed({
@@ -95,7 +98,8 @@
 });
 userFeed.run();
 </script>
-    {% endif %}  -->
+    {% endif %} 
+{% include 'ajaxify-cart' %}
 
 
 </body>

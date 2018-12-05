@@ -8,6 +8,7 @@
 // =require vendor/jquery-3.3.1.min.js
 
 
+
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.
 //
@@ -40,8 +41,6 @@ window.theme = window.theme || {};
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
 // =require templates/customers-login.js
-//= require turbolinks
-// =require vendor/sticky-sidebar.js
 
 
 
@@ -94,6 +93,11 @@ $(window).load( function() {
     /* Check panel overlay */
 
   }); 
+
+  $(".view-ingredients").click( function() {
+    $(".all-ingredients").toggleClass("active");
+
+  }); 
   
 });
  
@@ -101,6 +105,13 @@ $(".dropdown-menu a").click(function() {
   $('.dropdown-item').toggle(200);
 
 })  
+
+$(window).load(function(){
+     $('#loading').animate({
+       opacity: .2,
+     }).hide();
+});
+
   
 
 
@@ -110,7 +121,7 @@ $(window).scroll(function(){
     event.preventDefault();
     $(".scrollToTop").css({'transform': 'translate(0px, 0px)'});
   } else {
-    $(".scrollToTop").css({'transform': 'translate(180px, 0px)'});
+    $(".scrollToTop").css({'transform': 'translate(200px, 0px)'});
   }
 });
 
@@ -119,7 +130,7 @@ $("a[href^='#']").on('click', function (e) {
 
   $('html, body').animate({
     scrollTop: $($(this).attr('href')).offset().top
-  }, 500, 'linear');
+  }, 600, 'linear');
 });
 
 

@@ -1,5 +1,4 @@
 <div class="product-page" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
-{% include 'breadcrumbs' %}
   {%- assign current_variant = product.selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
@@ -17,6 +16,8 @@
 <div class="product-post--copy">
 
   <h4>{{ product.title }}</h4>
+
+
 
       <div class="product-post--price" data-price-wrapper>
           {{ current_variant.price | money }}
@@ -81,7 +82,7 @@
       </select>
 
 
-      <button class="btn product-page"
+      <button class=" product-page"
         type="submit"
         name="add"
         data-add-to-cart
@@ -92,8 +93,15 @@
     </form>
 
   </div>
+  <div class="product-savings">
+    
+    <p>Or save $12 by getting the full-size in the Phase 1 Set—the essentials for happy, hydrated skin.</p>
+    <img src="//cdn.shopify.com/s/files/1/2140/7529/products/58_0aa3a3994a-perfume-context-5-4_480x480.jpg?v=1542777535" alt="Cleanser">
 
   </div>
+
+  </div>
+
 
   </div>
 
@@ -101,10 +109,15 @@
   <h3>Lorum Ipsum</h3>
   <p> {{ product.metafields['product']['mission'] }} </p>
   <img src=" {{ product.metafields['product']['intro_img'] }}" />
+
+  <div id="ingredients">
+
   <h3>Key Ingredients</h3>
+  </div>
+
   <p class="ingredient-intro"> {{ product.metafields['product']['ingredient_intro'] }} </p>
   
-  <div class="ingredients" id="ingredients">
+  <div class="ingredients" >
   <div class="ingredient-1">
   <p> {{ product.metafields['product']['ingredient-1'] }} </p>
 
@@ -120,16 +133,27 @@
 
   </div>
 
+<button class="view-ingredients"> View All Ingredients > </button>
 
+<div class="all-ingredients">
+  <p> {{ product.metafields['product']['ingredient-1'] }} </p>
+  <p> {{ product.metafields['product']['ingredient-1'] }} </p>
+  <p> {{ product.metafields['product']['ingredient-1'] }} </p>
+  <p> {{ product.metafields['product']['ingredient-1'] }} </p>
+  <p> {{ product.metafields['product']['ingredient-1'] }} </p>
 
   </div>
 
+  </div>
   <img src=" {{ product.metafields['product']['ingredient-img'] }}" />
 
+
+<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
   </div>
   </div>
 
-  <div class="scrollToTop">
+  <div class="scrollToTop" style="transform: translate(200px, 0px);">
      <form action="/cart/add" method="post" enctype="multipart/form-data">
       
 

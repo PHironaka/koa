@@ -1,0 +1,42 @@
+{% assign blog_handle = 'koa-news' %}
+
+{% unless blogs[blog_handle].empty? or blogs[blog_handle].articles.size == 0 %}
+
+
+<hr class="hr--clear hr--small">
+
+<div class="grid">
+  <div class="grid__item grid-item {{ container_width }}">
+    <div class="section-header text-center">
+      <h2 class="section-header--title">LATEST ARTICLES</h2>
+    </div>
+    <div class="grid" style="padding-left: 20px; padding-right: 20px">
+      {% for article in blogs[blog_handle].articles limit: 3 %}
+        <div class="grid__item grid-item {{ article_width }}">
+
+          <p class="h4">{{ article.title | link_to: article.url }}</p>
+          <p><small>{{ article.published_at | date: '%B %d, %Y' }}</small></p>
+
+          {% comment %}
+            Let's extract an image from article.excerpt_or_content.
+            We will replace the image suffix with _1024x1024.
+            The image will point to the article page.
+          {% endcomment %}
+
+
+          {% if article.image %}
+          <p>
+            <a href="{{ article.url }}">
+              <img src="{{ article.image | img_url: '1024x1024' }}" alt="{{ article.title | escape }}" />
+            </a>
+          </p>
+          {% endif %}
+
+          
+          <p><a href="{{ article.url }}">Read more →</a></p>
+
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

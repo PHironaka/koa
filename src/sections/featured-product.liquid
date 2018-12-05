@@ -24,7 +24,7 @@
 
 
   {% if featured_image.src != blank %}
-    <img src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+    <img src="{{ product.metafields['product']['intro_img'] }}" data-product-featured-image>
   {% endif %}
 
   {% if product.images.size > 1 %}
@@ -39,7 +39,9 @@
     </ul>
   {% endif %}
 
+  {% comment %}
   <a href="{{ product.url }}" class="shop-now">Shop Now</a>
+  {% endcomment %}
 
 </div>
 

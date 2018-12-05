@@ -4,7 +4,7 @@
 
 <div class="product-collection--intro">
 <h3>DIRECT FROM YOU,  AFFORDABLE FROM NATURE </h3>
-<h5> SHOP OUR ESSENTIALS KIT </h5>
+<h5><a href="{{ product.url | within: collection }}" class="product {{product.title}}"> SHOP OUR ESSENTIALS KIT </a> </h5>
 </div>
 
 {% for product in collection.products limit: 20 %}

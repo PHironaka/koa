@@ -1,0 +1,65 @@
+
+
+{%- assign blog = blogs[section.settings.blog] -%}
+
+
+
+<div class="container" id="shopify-section-featured-collection">
+
+<div class="product-collection--intro">
+<h3>Explore The Journal </h3>
+</div>
+{% for article in blog.articles limit:3 %}
+<div >
+  <a href="{{ article.url }}">
+    <h4>{{ article.title }}</h4>
+    <img src="{{ article.image | img_url: '1024x1024' }}" alt="{{ article.title | escape }}" />
+    </a>
+</div>    
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Featured Blog",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Blog"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+
+       {
+                "type": "range",
+                "id": "post_limit",
+                "label": "Posts",
+                "min": 1,
+                "max": 3,
+                "step": 1,
+                "default": 3
+            }
+    ],
+    "presets": [
+      {
+        "name": "Featured Blog",
+        "category": "Blog",
+         "settings": {
+                    "blog": "Koa News"
+                }
+      }
+    ]
+  }
+
+{% endschema %}
