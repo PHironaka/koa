@@ -1,25 +1,23 @@
 
 
 {%- assign blog = blogs[section.settings.blog] -%}
-
-
-
-<div class="container" id="shopify-section-featured-collection">
-
-<div class="product-collection--intro">
-<h3>Explore The Journal </h3>
+<div class=" blog-header product-collection--intro">
+<h3>EXPLORE THE JOURNAL </h3>
 </div>
-{% for article in blog.articles limit:3 %}
+<div id="center" class="my-slider">
+
+  {% for article in blog.articles  %}
 <div >
   <a href="{{ article.url }}">
-    <h4>{{ article.title }}</h4>
+    <h4>{{ article.title }}</h4> </a>
     <img src="{{ article.image | img_url: '1024x1024' }}" alt="{{ article.title | escape }}" />
-    </a>
+   
 </div>    
 {% endfor %}
 
-
 </div>
+
+<a class="blog-read" href="/blogs/industry-of-all-nations"> Read More </a>
 
 
 

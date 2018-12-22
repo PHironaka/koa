@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.color_primary }}">
   <link rel="canonical" href="{{ canonical_url }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.8/tiny-slider.css">
 
   {% if settings.favicon != blank %}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
@@ -61,9 +62,7 @@
 
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lt IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
-<!--   {% if template contains 'index' %}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/instafeed@2.0.0/lib/instafeed.min.js"></script>{% endif %} 
- -->
+
   <!--[if lt IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
 <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js"></script> -->
 
@@ -73,34 +72,104 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
-     {% if template contains 'index' %}<div id="loading"></div>  {% endif %} 
+  {% if template contains 'index' %}
+    <div id="loading">
+          <!-- <img src="https://cdn.shopify.com/s/files/1/2140/7529/files/arrow.gif?8702977530642294641" class="pic"> -->
+
+    </div>  
+  {% endif %} 
   
 
   {% section 'header' %}
 
-  <main role="main" id="MainContent">
+
+  <main role="main" class="main" id="MainContent">
 
     {{ content_for_layout }}
-<!--    {% if template contains 'index' %}
-    <div id="instafeed"></div>
-    {% endif %}  -->
-    
+     {% if template contains 'index' %}
+     <div class="insta-module">
+       <h3>Be a Force of Nature</h3>
+       <div class="insta-module--follow">
+        <h5>Follow Along</h5>
+        <h5 class="username">@koa</h5>
+         
+       </div>
+<div id="instafeed">
+  <img src="https://cdn.shopify.com/s/files/1/2140/7529/files/0f0013a22c1f46441cd4815528f9fc0f.jpg?10556269729629292311">
+
+  <img src="https://cdn.shopify.com/s/files/1/2140/7529/files/00636900f53e2027ec312d9b3c4f6081.jpg?10556269729629292311">
+
+  <img src="https://cdn.shopify.com/s/files/1/2140/7529/files/dc409fcef9c1f878ac99857e812133f9.jpg?10556269729629292311">
+
+  <img src="https://cdn.shopify.com/s/files/1/2140/7529/files/TRU2213526.jpg?10556269729629292311">
+
+  <img src="https://cdn.shopify.com/s/files/1/2140/7529/files/tumblr_ok63jo79Lo1qbx7fko1_1280.jpg?10556269729629292311">
+
+</div>  
+</div>
+     {% endif %} 
+  
   </main>
 
   {% section 'footer' %}
+    {% if template contains 'index' %}
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us16.list-manage.com","uuid":"f439509fc5f71ea75c2afcec9","lid":"d0729e8ee1","uniqueMethods":true}) })</script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.0/min/tiny-slider.js"></script>
 
-   {% if template contains 'index' %}
-<script type="text/javascript">
- var userFeed = new Instafeed({
+<!-- <script type="text/javascript">
+    var userFeed = new Instafeed({
   get: 'user',
-  userId: '1560853632',
-  accessToken: '6281230240.1677ed0.6d1fc0e0758d4fe99c77568ca5c9f16d'
+  userId: '6281230240',
+  clientId: '924f677fa3854436947ab4372ffa688d',
+  accessToken: '6281230240.1677ed0.6d1fc0e0758d4fe99c77568ca5c9f16d',
+  resolution: 'standard_resolution',
+  sortBy: 'most-recent',
+  limit: 5,
+  links: false
 });
 userFeed.run();
-</script>
-    {% endif %} 
-{% include 'ajaxify-cart' %}
 
+
+</script> -->
+
+<script>
+  var slider = tns({
+    container: '.my-slider',
+    items: 1,
+    loop: true,
+    swipeAngle:false,
+    autoWidth:false,
+    edgePadding: 20,
+     gutter: 20,
+    autoHeight:true,
+   controls:true,
+   controlsPosition:'bottom',
+   nav:false,
+    mouseDrag:true, 
+    responsive: {
+      640: {
+        edgePadding: 20,
+        gutter: 20,
+        items: 2
+      },
+      700: {
+        gutter: 30
+      },
+      900: {
+        items: 3
+      }
+    }
+    
+  });
+</script>
+
+
+    {% endif %} 
+
+
+{% include 'cart-drawer' %}
+<!--  <script src="{{ 'instantclick.min.js' | asset_url }}" data-no-instant></script>
+<script data-no-instant>InstantClick.init();</script> -->
 
 </body>
 </html>

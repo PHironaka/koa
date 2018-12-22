@@ -29,12 +29,7 @@
       margin: 0;
     }
 
-    td::before {
-      content: attr(data-label);
-      float: left;
-      text-align: center;
-      padding-right: 10px;
-    }
+    
   }
 
   // Add a keyline between rows

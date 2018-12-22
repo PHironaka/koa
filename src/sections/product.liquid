@@ -38,7 +38,7 @@
     {{ product.description }}
 
     <h5> BE A FORCE OF NATURE </h5>
-    <h6><a href="#ingredients" > Key Ingredients > </a></h6>
+    <h6><a href="#show-ingredients" > Key Ingredients > </a></h6>
   </div>
 
 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -110,6 +110,8 @@
   <p> {{ product.metafields['product']['mission'] }} </p>
   <img src=" {{ product.metafields['product']['intro_img'] }}" />
 
+  <div id="show-ingredients"></div>
+
   <div id="ingredients">
 
   <h3>Key Ingredients</h3>
@@ -151,7 +153,9 @@
 <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
 
   </div>
-  </div>
+
+  
+
 
   <div class="scrollToTop" style="transform: translate(200px, 0px);">
      <form action="/cart/add" method="post" enctype="multipart/form-data">
