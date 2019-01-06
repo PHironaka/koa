@@ -10,6 +10,12 @@
   pointer-events: none;
 }
 
+.featured-product--image {
+	@media screen and (max-width: 800px) {
+      display: none;
+}
+}
+
 #instantclick-bar {
   background: black;
 }
@@ -738,7 +744,7 @@ padding:1.4em !important;
 
 .cart-products, .cart-titles {
 	display:grid;
-	grid-template-columns:2fr 1fr 1fr ;
+	grid-template-columns:1fr 1fr  ;
 	grid-gap:2em;
 	text-transform: uppercase;
 	    font-family: helvetica, san serif;
@@ -768,7 +774,6 @@ padding:1.4em !important;
 
 .cart-products--title {
 	display:grid;
-	grid-template-columns:1fr 2fr ;
 	font-family: europa, sans-serif;
 
 }
@@ -826,6 +831,12 @@ table.responsive-table {
 	text-transform:uppercase;
 font-weight:normal;
 font-size:.9em;
+
+ 
+  @media screen and (max-width: 800px) {
+	text-align:left;
+
+}
 	
 
 	}
@@ -850,13 +861,14 @@ background:white;
 	}
 
 	.remove-item {
-	text-align:center;
 	width:100%;
-	font-size:.6em;
+	font-size:.8em;
 	letter-spacing:2px;
 	font-weight:700;
-	display:block;
-	margin-bottom:3em;
+	display: block;
+    text-align: left;
+    position: relative;
+    margin: 4em 0px;
 	}
 
 	.product-cart--description {
@@ -865,8 +877,9 @@ background:white;
 
 	.cart-products {
 	font-family: europa, sans-serif;
-    font-size:.9em;
-font-weight:normal;
+   font-size: .8em;
+    letter-spacing: 2px;
+    font-weight: normal;
 	}
 }
 
@@ -1428,7 +1441,7 @@ h3 {
 
 .quantity {
   position: relative;
-
+  font-weight:700;
    
 
 
@@ -1475,11 +1488,13 @@ table {
 }
 
 .quantity input {
-    width: 96px;
+    width: 20px;
     min-height: 40px;
     line-height: 1.65;
     float: left;
     display: block;
+    font-family: europa, sans-serif;
+    border:none;
     padding: 0;
     margin: -1px 0px 0 10px;
 }
@@ -1489,9 +1504,10 @@ table {
 }
 
 .quantity-nav {
-  float: left;
+
   position: relative;
   height: 40px;
+
 }
 
 .quantity-button {
@@ -1552,11 +1568,6 @@ input[type=number]
   outline: 0;
 }
 
-.quantity-nav {
-  float: left;
-  position: relative;
-  height: 37px;
-}
 
 .quantity-button {
   position: relative;
@@ -1644,3 +1655,64 @@ input[type=number]
 .hidden {
    display: none;
 }	
+
+.spr-summary {
+	font-family: europa, sans-serif;
+    font-size: .6em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight:700;
+}
+
+.spr-form h3 {
+	font-family: europa, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight:700;
+}
+
+.spr-review-reportreview {display:none;}
+
+.spr-form form {
+	font-family: europa, sans-serif;
+    font-size: .7em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight:700;
+
+    .spr-form-input-textarea {
+    font-family: europa, sans-serif;
+    font-size: .8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding:10px;
+
+    }
+
+    input {
+    padding:10px;
+	font-family: europa, sans-serif;
+    font-size: .7em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight:700;
+    }
+
+    .spr-button {
+        background: black;
+    color: white;
+    padding: 14px;
+        float: none;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -o-transition: .2s ease;
+    transition: .2s ease;
+
+   &:hover {
+  background: white ;
+    color: black;
+    border:1px solid;
+    }
+    }
+
+}

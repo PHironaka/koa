@@ -1,3 +1,4 @@
+{%- assign collection = collections[section.settings.collection] -%}
 {%- assign product = all_products[section.settings.product] -%}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -24,7 +25,7 @@
 
 
   {% if featured_image.src != blank %}
-    <img src="{{ product.metafields['product']['intro_img'] }}" data-product-featured-image>
+    <img class="featured-product--image" src="{{ product.metafields['product']['intro_img'] }}" data-product-featured-image>
   {% endif %}
 
   {% if product.images.size > 1 %}
@@ -39,7 +40,7 @@
     </ul>
   {% endif %}
 
-  <a href="{{ product.url }}" class="shop-now">Shop Now</a>
+  <a href="/collections/koa" class="shop-now">Shop Now</a>
 
 
 </div>

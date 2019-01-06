@@ -210,7 +210,7 @@ jQuery(document).ready(function() {
 
 //Check the scroll position
 $(window).scroll(function(){
-  if ($(this).scrollTop() > 500) {
+  if ($(this).scrollTop() > 1000) {
     event.preventDefault();
     $(".scrollToTop").css({'transform': 'translate(0px, 0px)'});
   } else {
