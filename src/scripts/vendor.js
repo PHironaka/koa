@@ -100,7 +100,7 @@ $(document).ready(function() {
   
 
 
-$(window).load( function() {
+$( document ).ready(function() {
 
   $(".mobile-nav--button, .close").click( function() {
     $(".modal-box, .main, .active").toggleClass("active");
@@ -122,20 +122,20 @@ $(".dropdown-menu a").click(function() {
 
 }) 
 
-jQuery(document).ready(function() {
-  if (sessionStorage.getItem('dontLoad') == null)
-    {
-      //    $("#loading").delay(1500).fadeOut("slow", function(){
-//     $('#homepage').fadeIn("slow");
-// });;
-      jQuery("#loading").delay(1500).fadeOut("slow");
-      jQuery("#homepage").fadeIn("slow");
-      sessionStorage.setItem('dontLoad', 'true');
-    }
-  else {
-      jQuery("#loading").remove();
-  }  
-});
+// jQuery(document).ready(function() {
+//   if (sessionStorage.getItem('dontLoad') == null)
+//     {
+//       //    $("#loading").delay(1500).fadeOut("slow", function(){
+// //     $('#homepage').fadeIn("slow");
+// // });;
+//       jQuery("#loading").delay(1500).fadeOut("slow");
+//       jQuery("#homepage").fadeIn("slow");
+//       sessionStorage.setItem('dontLoad', 'true');
+//     }
+//   else {
+//       jQuery("#loading").remove();
+//   }  
+// });
 
 
 
@@ -200,12 +200,12 @@ jQuery(document).ready(function() {
 // setCookie();
 
 
-// $(window).load(function(){
-//    $("#loading").delay(1500).fadeOut("slow", function(){
-//     $('#homepage').fadeIn("slow");
-// });;
+$(window).load(function(){
+   $("#loading").delay(1500).fadeOut("slow", function(){
+    $('#homepage').fadeIn("slow");
+});;
 
-// });
+});
 
 
 //Check the scroll position

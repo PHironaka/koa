@@ -9,9 +9,7 @@
       display: none;
     }
 
-    tr {
-      display: block;
-    }
+    
 
     // IE9 table layout fixes
     tr,
@@ -23,9 +21,7 @@
 
     th,
     td {
-      display: block;
       text-align: left;
-      padding: $gutter / 2;
       margin: 0;
     }
 
