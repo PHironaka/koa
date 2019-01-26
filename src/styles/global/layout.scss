@@ -773,6 +773,7 @@ padding:1.4em !important;
     grid-template-columns:200px 1fr ;
     @media screen and (max-width: 800px) {
         grid-template-columns: 1fr 2fr ;
+        border-bottom: 1px solid #eee;
          
       }
 
